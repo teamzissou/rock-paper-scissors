@@ -35,6 +35,36 @@ function playRound(playerChoice, computerChoice) {
     return result;
 }
 
+function game() {
+    let wins = 0;
+    let losses = 0;
+    let ties = 0;
+
+    for (i = 0; i < 5; i++) {
+        let playerChoice = prompt('What do you choose: rock, paper, scissors?');
+        let result = playRound(playerChoice,getComputerChoice());
+        
+        if (result.substring(0,5) === 'You w') {
+            wins++;
+        } else if (result.substring(0,5) === 'You l') {
+            losses++;
+        } else {
+            ties++;
+        }
+
+        console.log(result);
+    }
+
+    if (wins > losses) {
+        console.log('You won!');
+    } else if (losses > wins) {
+        console.log('You lose :(');
+    } else {
+        console.log('You tied :/ Try again.')
+    }
+}
+
 const computerChoice = getComputerChoice();
-const playerChoice = 'ROCK';
-playRound(playerChoice,computerChoice);
+// const playerChoice = 'ROCK';
+// playRound(playerChoice,computerChoice);
+game();
